@@ -21,6 +21,7 @@
                     </div>
                 </div>
             </div>
+            @guest
             <div class="col-lg-3 col-sm-6">
                 <div class="footer-widget pl-60">
                     <h3>For Candidate</h3>
@@ -64,6 +65,7 @@
                     </ul>
                 </div>
             </div>
+            @endguest
             <div class="col-lg-3 col-sm-6">
                 <div class="footer-widget pl-60">
                     <h3>Quick Links</h3>
