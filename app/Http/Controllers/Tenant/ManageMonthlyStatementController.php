@@ -61,6 +61,7 @@ class ManageMonthlyStatementController extends Controller
                     $statement->student_id = $approved_application->student_id;
                     $statement->scholarship_id = $approved_application->scholarship_id;
                     $statement->approved_amount = $approved_application->approved_amount;
+                    $statement->approved_cost = $approved_application->approved_cost;
                     $statement->month_year = $request->month_year;
                     $statement->account_id = $approved_application->account_id;
                     $statement->save();
@@ -129,12 +130,14 @@ class ManageMonthlyStatementController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'approved_amount' => 'required',
+            'approved_cost' => 'required',
             'payment_status' => 'required',
         ]);
 
         $statement = MonthlyStatement::find($request->statement_id);
 
         $statement->approved_amount = $request->approved_amount;
+        $statement->approved_cost = $request->approved_cost;
         $statement->status = $request->payment_status;
         $statement->note = $request->note;
         $statement->save();

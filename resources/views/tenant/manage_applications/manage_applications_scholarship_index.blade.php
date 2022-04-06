@@ -72,6 +72,8 @@
                                         <th>SL#</th>
                                         <th>Scholarship Title</th>
                                         <th>Amount</th>
+                                        <th>Cost</th>
+                                        <th>Total</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -84,6 +86,8 @@
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $scholarship->scholarship_title }}</td>
                                             <td>{{ $scholarship->amount }}</td>
+                                            <td>{{ $scholarship->cost }}</td>
+                                           <td> {{ $totalAmount = $scholarship->amount + $scholarship->cost}}</td>
                                             <td>{{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}</td>
                                             <td>{{ $scholarship->status }}</td>
                                             

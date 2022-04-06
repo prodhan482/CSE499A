@@ -79,6 +79,8 @@
                                         <th>Student ID</th>
                                         <th>Phone</th>
                                         <th>Approved Amount</th>
+                                        <th>Approved Cost</th>
+                                        <th>Total</th>
                                         <th>Payee</th>
                                         <th>Mentor/Student</th>
                                         <th class="text-center">View</th>
@@ -93,6 +95,8 @@
                                             <td>{{ $approved_application->student->sid }}</td>
                                             <td>{{ $approved_application->student->phone }}</td>
                                             <td>{{ $approved_application->approved_amount }}</td>
+                                            <td>{{ $approved_application->approved_cost }}</td>
+                                            <td>{{ $approved_application->approved_amount + $approved_application->approved_cost }}</td>
                                             <td>{{ $approved_application->account->account_title }}</td>
                                             @php
                                                 $payee = explode('\\', $approved_application->account->accountable_type);

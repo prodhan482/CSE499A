@@ -61,6 +61,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="cost">Cost(Tk.)</label><span class="text-danger">*</span>
+                                <input type="number" class="form-control" id="cost" name="cost"
+                                    placeholder="Enter cost Tk." value="{{ $statement->approved_cost }}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="payment_status">Payment Status<span class="text-danger">*</span></label>
                                 <select class="form-control" name="payment_status" id="payment_status" required>
                                     <option value="">SELECT</option>

@@ -61,6 +61,15 @@
                         Accounts
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{ route('statement_details_view') }}"
+                        class="{{ \Request::route()->getName() == 'statement_details_view' ? 'active' : '' }}">
+                        <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+                        <i class="iconify" data-icon="icon-park:form-one"></i>
+                        Scholarship Statement
+                    </a>
+                </li>
                 {{-- @endif --}}
             @endrole
 
@@ -72,6 +81,8 @@
                     Settings
                 </a>
             </li>
+
+
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">

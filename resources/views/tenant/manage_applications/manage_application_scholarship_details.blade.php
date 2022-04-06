@@ -52,6 +52,18 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>Approved Cost:</strong>
+                            {{ $approved_application_detail->approved_cost }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Total:</strong>
+                            {{ $approved_application_detail->approved_amount + $approved_application_detail->approved_cost }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>From Date:</strong>
                             {{ (new DateTime($approved_application_detail->from_date))->format('d-M-Y') }}
 

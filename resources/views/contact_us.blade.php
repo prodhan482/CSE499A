@@ -7,162 +7,237 @@
 @section('content')
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-*
-{
-margin: 0;
-padding:0;
-box-sizing: border-box;
-font-family: 'Montserrat', sans-serif;
-}
-body
-{
-    background-color: #eeeeee;
-    justify-content: center;
+    @import url('https://fonts.goggleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
-}
-.contact-container
-{margin: 10% 0;
-    display: flex;
-    flex-direction: row;
-    width: 900px;
-    max-width: 90%;
-    box-shadow:  9px 9px 18px #cdcdcd,              -9px -9px 18px #ffffff;
-    margin-left:20%; 
-
-}
-/* Left side Design*/
-.contact-left
-{
-    width: 60%;
-    padding: 20px;
-    color: #52565e;
-}
-.contact-form
-{
-    margin-top: 10px;
-    width: 100%;
-}
-.single-row
-{
-    display: flex;
-    justify-content: space-between;
-}
-.form-in
-{
-    padding: 0.5em;
-    font-size: 14px;
-    width: 100%;
-    resize: vertical;
-    margin-top: 1em;
-    background: #eeeeee;
-    border: none;
-    box-shadow: inset 5px 5px 12px #e0e0e0, 
-            inset -5px -5px 12px #fcfcfc;
-            outline: none;
-    color: #52565e;
-}
-.single-row + input
-{
-margin: 0 10px;
-}
-.ml
-{
-    margin-left: 10px;
-}
-.mr
-{
-    margin-right: 10px;
-}
-
-.multiple-row
-{
-    position: relative;
-}
-#submit
-{
-    display: none;
-}
-#submit + label
-{
-    position: absolute;
-    font-size: 14px;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px;
-    background-color: #001935 ;
-    background-color: ;
-    border-radius: 100%;
-    color: #eeeeee;
-    box-shadow:  6px 6px 12px #bebebe, 
-             -6px -6px 12px #ffffff;
-    cursor: pointer;
-}
-
-#submit + label:hover
-{
-    box-shadow: inset 6px 6px 12px #2954b9, 
-            inset -6px -6px 12px #3d7eff;
-}
-/* Right side Design*/
-.contact-right
-{
-    padding: 20px;
-    width: 40%;
-    background: linear-gradient(#3369e798,#001935),url('https://images.unsplash.com/photo-1597773026935-df49538167e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
-    color: #eeeeee;
-}
-textarea
-{
-    min-height: 200px;
-}
-
-.contact-info,.social-links
-{
-font-size: 14px;
-margin-top: 40px;
-}
-.contact-info p
-{
-    margin-bottom: 20px;
-    color: #cdcdcd;
-}
-.contact-info p  i
-{
-    margin-right: 20px;
-}
-
-.social-links a
-{
-    font-size: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    color: #eeeeee;
-    margin-right: 20px;
-    transition: 0.3s;
-}
-.social-links a:hover
-{
-margin-left: 10px;
-}
-
-
-@media only screen and (max-width: 770px)
-{
-    .contact-container
-    {
-        flex-direction: column;
+    .contactUs {
+        position: relative;
+        width: 100%;
+        padding: 40px, 100px;
     }
-    .contact-right,.contact-left
-    {
+
+    .contactUs .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+    }
+
+    .contactUs .title h2 {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .form {
+        grid-area: form;
+    }
+
+    .info {
+        grid-area: info;
+    }
+
+    .map {
+        grid-area: map;
+    }
+
+    .contact {
+        padding: 40px;
+        background: #fff;
+        box-shadow: 0 5px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .box {
+        position: relative;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 5fr 4fr;
+        grid-template-areas:
+            "form info"
+            "form map";
+        grid-gap: 20px;
+        margin-top: 20px;
+    }
+
+    .contact h3 {
+        color: #0e3959;
+        font-weight: 500;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+
+    /* form */
+    .formBox {
+        position: relative;
         width: 100%;
     }
-}
+
+    .formBox .row50 {
+        display: flex;
+        gap: 20px;
+    }
+
+    .inputBox {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+
+    .formBox .row100 .inputBox {
+        width: 100%;
+    }
+
+    .inputBox span {
+        color: #18b7ff;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .inputBox input {
+        padding: 10px;
+        font-size: 1.1em;
+        outline: none;
+        border: 1px solid #333;
+    }
+
+    .inputBox textarea {
+        padding: 10px;
+        font-size: 1.1em;
+        outline: none;
+        border: 1px solid #333;
+        resize: none;
+        min-height: 220px;
+        margin-bottom: 10px;
+    }
+
+    .inputBox input[type="submit"] {
+        background: #ff578f;
+        color: #fff;
+        border: none;
+        font-size: 1.1em;
+        max-width: 120px;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 14px 15px;
+    }
+
+    .inputBox ::placeholder {
+        color: #999;
+    }
+
+    /* INFO */
+
+    .info {
+        background: #0e3959;
+    }
+
+    .info h3 {
+        color: #fff;
+    }
+
+    .info .infoBox div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .info .infoBox div span {
+        min-width: 40px;
+        height: 40px;
+        color: white;
+        background: #18b7ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .info .infoBox div p {
+        color: #fff;
+        font-size: 1.1em;
+    }
+
+    .info .infoBox div a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1em;
+    }
+
+    .sci {
+        margin-top: 40px;
+        display: flex;
+    }
+
+    .sci li {
+        list-style: none;
+        margin-right: 15px;
+    }
+
+    .sci li a {
+        color: #fff;
+        font-size: 2em;
+        color: #ccc;
+    }
+
+    .sci li a:hover {
+        color: #fff;
+    }
+
+    .map {
+        padding: 0;
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    @media(max-width: 991px) {
+        body {
+            background: #03a9f5;
+        }
+
+        .contactUs {
+            padding: 20px;
+        }
+
+        .box {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+                "form"
+                "info"
+                "map";
+        }
+
+        .map {
+            min-height: 300px;
+        }
+
+        .formBox .row50 {
+            display: flex;
+            gap: 0;
+            flex-direction: column;
+        }
+
+        .inputBox {
+            width: 100%;
+        }
+
+        .contact {
+            padding: 30px;
+        }
+    }
 </style>
 
+
+<body>
     <section class="page-title title-bg13">
-        <div class="d-table">
-            <div class="d-table-cell">
                 <h2>Contact Us</h2>
                 <ul>
                     <li>
@@ -170,69 +245,109 @@ margin-left: 10px;
                     </li>
                     <li>Contact Us</li>
                 </ul>
-            </div>
-        </div>
         <div class="lines">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
         </div>
     </section>
-
-    <div class="contact-container">
-      <div class="contact-left">
-        <h2>Send Message</h2>
-        <form class="contact-form" method="POST" action="sendMessage">
-            @csrf
-          <div class="single-row">
-              <input type="name" placeholder="Name" class="form-in mr" required>
-              <input type="phone" placeholder="Phone Number"class="form-in ml" required>
-          </div>
-          <div class="multiple-row">
-              <input type="email" placeholder="Email" class="form-in" required>
-              <textarea placeholder="Your Message" class="form-in" required></textarea>
-              <input type="submit" id="submit"><label for="submit"><i class="fas fa-paper-plane"></i></label>
-          </div>
-                    
-        </form>
-      </div>
-      <div class="contact-right">
-        <h2>Contact Informations</h2>
-        <div class="contact-info">
-          <p><i class="fas fa-phone-alt"></i> +88 01749 117117 </p>
-          <p><i class="fas fa-envelope"></i> contact@hilinkz.com </p>
-          <p><i class="fas fa-map-marker-alt"></i> Basundhara R/A, Dhaka, Bangladesh</p>
-        </div>
-    
-        
-      </div>
-    </div>
-    
-    <section class="subscribe-section">
+    <div class="signup-section ptb-100">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="section-title">
-                        <h2>Get New Scholarship Notifications</h2>
-                        <p>Subscribe & get all related scholarships notification</p>
+            <div class="contactUs">
+                <div class="box">
+                    <div class="contact form">
+                        <h3>Send a Message</h3>
+                        <form>
+                            <div class="formBox">
+                                <div class="row50">
+                                    <div class="inputBox">
+                                        <span>First Name</span>
+                                        <input type="text" placeholder="First Name." />
+                                    </div>
+                                    <div class="inputBox">
+                                        <span>Last Name</span>
+                                        <input type="text" placeholder="Last Name." />
+                                    </div>
+                                </div>
+                                <div class="row50">
+                                    <div class="inputBox">
+                                        <span>Email</span>
+                                        <input type="email" placeholder="example@mail.com" />
+                                    </div>
+                                    <div class="inputBox">
+                                        <span>Mobile</span>
+                                        <input type="text" placeholder="+880 1X1235678" />
+                                    </div>
+                                </div>
+                                <div class="row100">
+                                    <div class="inputBox">
+                                        <span>Message</span>
+                                        <textarea placeholder="Write Your Message....."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row100">
+                                    <div class="inputBox">
+                                        <input type="submit" value="Send" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <form class="newsletter-form" data-toggle="validator">
-                        <input type="email" class="form-control" placeholder="Enter your email" name="EMAIL" required
-                            autocomplete="off">
-                        <button class="default-btn sub-btn" type="submit">
-                            Subscribe
-                        </button>
-                        <div id="validator-newsletter" class="form-result"></div>
-                    </form>
+
+                    <div class="contact info">
+                        <h3>Contact Info</h3>
+                        <div class="infoBox">
+                            <div>
+                                <span>
+                                    <ion-icon name="location-outline"></ion-icon>
+                                </span>
+                                <p>Basundhara R/A, Dhaka <br />Bangladesh</p>
+                            </div>
+                            <div>
+                                <span>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                </span>
+                                <a href="mailto:contact@hilinkz.com">contact@hilinkz.com</a>
+                            </div>
+                            <div>
+                                <span>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </span>
+                                <a href="tel:+88 01749 117117">+88 01749 117117</a>
+                            </div>
+                            <ul class="sci">
+                                <a href="https://www.facebook.com/hilinkz">
+                                    <li>
+                                        <ion-icon name="logo-facebook"></ion-icon><a href="#"></a>
+                                    </li>
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/hilinkz/">
+                                        <ion-icon name="logo-linkedin"></ion-icon>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="contact map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111239.729762746!2d90.42243546382743!3d23.82359779597969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fce7d991f%3A0xacfaf1ac8e944c05!2sBasundhara%20Residential%20Area%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1649259192946!5m2!1sen!2sbd"
+                            style="border: 0" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-@endsection
+    @endsection
 
-@section('custom_js')
+    @section('custom_js')
 
-@endsection
+    @endsection
+</body>

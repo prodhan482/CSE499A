@@ -18,6 +18,7 @@ class CreateMonthlyStatementsTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students');
             $table->foreignId('scholarship_id')->references('id')->on('scholarships');
             $table->double('approved_amount')->nullable();
+            $table->double('approved_cost')->nullable();
             $table->date('month_year')->nullable();
             $table->text('note')->nullable();
             $table->integer('account_id')->nullable();

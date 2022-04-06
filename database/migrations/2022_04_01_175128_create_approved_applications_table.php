@@ -19,6 +19,7 @@ class CreateApprovedApplicationsTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students');
             $table->foreignId('scholarship_id')->references('id')->on('scholarships');
             $table->double('approved_amount')->nullable();
+            $table->double('approved_cost')->nullable();
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
             $table->date('approval_date')->nullable();

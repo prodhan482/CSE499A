@@ -61,6 +61,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="cost">Approved Cost(Tk.)</label>
+                                <input type="number" class="form-control" id="approved_cost" name="approved_cost"
+                                    placeholder="Enter cost Tk." value="{{ $approved_application->approved_cost }}">
+                            </div>
+
+
+                            <div class="form-group">
                                 <label>From date<span class="text-danger">*</span></label>
                                 <input type="date" name="from_date" class="form-control"
                                     value="{{ (new DateTime($approved_application->from_date))->format('Y-m-d') }}"

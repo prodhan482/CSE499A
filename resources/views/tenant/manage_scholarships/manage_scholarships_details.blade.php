@@ -65,6 +65,18 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>Cost (Tk.):</strong>
+                            {{ $scholarship_data->cost }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Total (Tk.):</strong>
+                            {{ $scholarship_data->amount+$scholarship_data->cost }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>Application Deadline:</strong>
                             {{ (new DateTime($scholarship_data->deadline))->format('d-M-Y') }}
 

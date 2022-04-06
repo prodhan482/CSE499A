@@ -77,6 +77,8 @@
                                         <th>ID</th>
                                         <th>Phone</th>
                                         <th>Amount</th>
+                                        <th>Cost</th>
+                                        <th>Total</th>
                                         <th>Payee - (Mentor/Student)</th>
                                         {{-- <th>Mentor/Student</th> --}}
                                         <th>Status</th>
@@ -94,6 +96,8 @@
                                             <td>{{ $statement->student->sid }}</td>
                                             <td>{{ $statement->student->phone }}</td>
                                             <td>{{ $statement->approved_amount }}</td>
+                                            <td>{{ $statement->approved_cost }}</td>
+                                            <td>{{ $statement->approved_amount + $statement->approved_cost }}</td>
                                             {{-- <td>{{ $statement->account->account_title }}</td> --}}
                                             @php
                                                 $payee = explode('\\', $statement->account->accountable_type);

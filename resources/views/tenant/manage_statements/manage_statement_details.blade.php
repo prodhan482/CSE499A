@@ -46,6 +46,18 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>Approved Cost:</strong>
+                            {{ $statement->approved_cost }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Total:</strong>
+                            {{ $statement->approved_amount + $statement->approved_cost }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>Month & Year:</strong>
                             {{ (new DateTime($statement->month_year))->format('F-Y') }}
 
