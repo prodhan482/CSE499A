@@ -262,27 +262,27 @@
                                 <div class="row50">
                                     <div class="inputBox">
                                         <span>First Name</span>
-                                        <input type="text" placeholder="First Name." />
+                                        <input type="text" placeholder="First Name." required/>
                                     </div>
                                     <div class="inputBox">
                                         <span>Last Name</span>
-                                        <input type="text" placeholder="Last Name." />
+                                        <input type="text" placeholder="Last Name." required/>
                                     </div>
                                 </div>
                                 <div class="row50">
                                     <div class="inputBox">
                                         <span>Email</span>
-                                        <input type="email" placeholder="example@mail.com" />
+                                        <input type="email" placeholder="example@mail.com" required/>
                                     </div>
                                     <div class="inputBox">
                                         <span>Mobile</span>
-                                        <input type="text" placeholder="+880 1X1235678" />
+                                        <input type="text" placeholder="+880 1X1235678" required/>
                                     </div>
                                 </div>
                                 <div class="row100">
                                     <div class="inputBox">
                                         <span>Message</span>
-                                        <textarea placeholder="Write Your Message....."></textarea>
+                                        <textarea placeholder="Write Your Message....." required></textarea>
                                     </div>
                                 </div>
 
