@@ -257,7 +257,7 @@
                 <div class="box">
                     <div class="contact form">
                         <h3>Send a Message</h3>
-                        <form>
+                        <form action="" method="POST">
                             <div class="formBox">
                                 <div class="row50">
                                     <div class="inputBox">

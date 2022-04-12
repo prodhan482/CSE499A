@@ -96,7 +96,7 @@
                         @cannot('student-can')
                             <div class="candidate-social blink_me">
                                 <a href="{{ route('student_profile_create') }}" target=""><button type="button"
-                                        class="btn btn-warning">Please Compleye Your
+                                        class="btn btn-warning">Please Complete Your
                                         Profile</button></a>
                             </div>
                         @endcannot

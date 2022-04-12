@@ -81,9 +81,9 @@ Route::GET('/edit-user-profile', [EditProfileController::class, 'index'])->name(
 Route::GET('/edit-user-info', [EditProfileController::class, 'user_info_edit'])->name('edit_user_info')->middleware('auth');
 Route::POST('/update-user-password',[EditProfileController::class, 'update_user_password'])->name('update_user_password')->middleware('auth');
 Route::POST('/update-user-other-info',[EditProfileController::class, 'update_user_other_info'])->name('update_user_other_info')->middleware('auth');
-Route::POST('/student-statement-view',[EditProfileController::class, 'statement_details_view'])->name('statement_details_view')->middleware('auth');
-
 // Route::POST('/update-user-other-info',[EditProfileController::class, 'update_user_other_info'])->name('update_user_other_info')->middleware('auth');
+Route::POST('/student-statement-view',[EditProfileController::class, 'show2'])->name('statement_details_view')->middleware('auth');
+
 
 
 
