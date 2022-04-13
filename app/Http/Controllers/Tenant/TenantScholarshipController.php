@@ -48,7 +48,6 @@ class TenantScholarshipController extends Controller
             'level' => 'required',
             'eligibility' => 'required',
             'amount' => 'required',
-            'cost' => 'required',
             'payment_type' => 'required',
             'deadline' => 'required',
         ]);
@@ -59,7 +58,6 @@ class TenantScholarshipController extends Controller
         $scholarship->level = $request->level;
         $scholarship->eligibility = $request->eligibility;
         $scholarship->amount = $request->amount;
-        $scholarship->cost = $request->cost;
         $scholarship->payment_type = $request->payment_type;
         $scholarship->deadline = $request->deadline;
         $scholarship->status = "ACTIVE";
@@ -131,7 +129,6 @@ class TenantScholarshipController extends Controller
             'level' => 'required',
             'eligibility' => 'required',
             'amount' => 'required',
-            'cost' => 'required',
             'payment_type' => 'required',
             'deadline' => 'required',
         ]);
@@ -142,7 +139,6 @@ class TenantScholarshipController extends Controller
         $scholarship->level = $request->level;
         $scholarship->eligibility = $request->eligibility;
         $scholarship->amount = $request->amount;
-        $scholarship->cost = $request->cost;
         $scholarship->payment_type = $request->payment_type;
         $scholarship->deadline = $request->deadline;
         // $scholarship->status = "ACTIVE";

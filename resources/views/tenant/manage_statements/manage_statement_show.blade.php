@@ -77,7 +77,7 @@
                                         <th>ID</th>
                                         <th>Phone</th>
                                         <th>Amount</th>
-                                        <th>Cost</th>
+                                        <th>Charge</th>
                                         <th>Total</th>
                                         <th>Payee - (Mentor/Student)</th>
                                         {{-- <th>Mentor/Student</th> --}}

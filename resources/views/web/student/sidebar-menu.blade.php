@@ -62,14 +62,14 @@
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="{{ route('student-statement-view') }}"
                         class="{{ \Request::route()->getName() == 'statement_details_view' ? 'active' : '' }}">
                         <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
                         <i class="iconify" data-icon="icon-park:form-one"></i>
                         Scholarship Statement
                     </a>
-                </li>
+                </li> --}}
                 {{-- @endif --}}
             @endrole
 

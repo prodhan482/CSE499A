@@ -88,11 +88,11 @@
                                     placeholder="Enter amountin Tk.">
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="cost">Cost(Tk.)</label><span class="text-danger">*</span>
                                 <input type="number" class="form-control" id="cost" name="cost"
                                     placeholder="Enter cost Tk.">
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <label>Application Deadline</label>

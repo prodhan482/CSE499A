@@ -80,7 +80,7 @@
                                         <th>Scholarship Title</th>
                                         {{-- <th>Eligibility</th> --}}
                                         <th>Amount</th>
-                                        <th>Cost</th>
+                                        {{-- <th>Cost</th> --}}
                                         <th>Total</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
@@ -97,7 +97,7 @@
                                             <td>{{ $scholarship->scholarship_title }}</td>
                                             {{-- <td>{{ $scholarship->eligibility }}</td> --}}
                                             <td>{{ $scholarship->amount }}</td>
-                                            <td>{{ $scholarship->cost }}</td>
+                                            {{-- <td>{{ $scholarship->cost }}</td> --}}
                                            <td> {{ $totalAmount = $scholarship->amount + $scholarship->cost}}</td>
                                             <td>{{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}</td>
                                             @if ($scholarship->status == 'ACTIVE')
