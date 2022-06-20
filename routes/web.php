@@ -5,20 +5,18 @@ use App\Http\Controllers\Admin\ManageRolesController;
 use App\Http\Controllers\Admin\ManageTenantsController;
 use App\Http\Controllers\Admin\ManageUsersController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\ManageStudentsController;
 use App\Http\Controllers\CommonControllers\DashboardController;
 use App\Http\Controllers\CommonControllers\EditProfileController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Tenant\ManageApplicationController;
 use App\Http\Controllers\Tenant\TenantScholarshipController;
 use App\Http\Controllers\Tenant\ManageMentorAccountController;
 use App\Http\Controllers\Tenant\ManageMentorController;
 use App\Http\Controllers\Tenant\ManageMonthlyStatementController;
-use App\Models\ContactUs;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -32,10 +30,8 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::view('/','home');
 Route::GET('/', [HomeController::class,'index'])->name('home');
-
 Route::GET('/contact_us', [HomeController::class,'contact_us'])->name('contact_us');
-Route::POST('/sendMessage', [HomeController::class,'sendMessage'])->name('sendMessage');
-
+Route::POST('/contact_us', [HomeController::class,'store'])->name('contact_us');
 
 
 require base_path('/routes/web/all.php');
@@ -82,8 +78,6 @@ Route::GET('/edit-user-info', [EditProfileController::class, 'user_info_edit'])-
 Route::POST('/update-user-password',[EditProfileController::class, 'update_user_password'])->name('update_user_password')->middleware('auth');
 Route::POST('/update-user-other-info',[EditProfileController::class, 'update_user_other_info'])->name('update_user_other_info')->middleware('auth');
 // Route::POST('/update-user-other-info',[EditProfileController::class, 'update_user_other_info'])->name('update_user_other_info')->middleware('auth');
-Route::POST('/student-statement-view',[EditProfileController::class, 'show2'])->name('statement_details_view')->middleware('auth');
-
 
 
 
@@ -99,11 +93,13 @@ Route::POST('/student-statement-view',[EditProfileController::class, 'show2'])->
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('manage_roles', ManageRolesController::class);
     Route::resource('manage_users', ManageUsersController::class);
+    Route::resource('manage_students', ManageStudentsController::class);
     Route::resource('manage_permissions', ManagePermissionsController::class);
     Route::resource('manage_tenants', ManageTenantsController::class);
     Route::resource('manage_mentors', ManageMentorController::class);
 });
 
+Route::POST('/manage-students-index', [ManageStudentsController::class, 'manage_students_info'])->name('manage_students_index')->middleware('auth');
 
 Route::POST('/manage-mentors-update/{id}', [ManageMentorController::class, 'update'])->name('manage_mentors_update')->middleware('auth');
 
@@ -160,6 +156,8 @@ Route::POST('/manage-mentor-accounts-store', [ManageMentorAccountController::cla
 Route::GET('/manage-mentor-accounts-details/{mentor_id}', [ManageMentorAccountController::class, 'show'])->name('manage_mentor_accounts_details')->middleware('auth');
 Route::GET('/manage-mentor-accounts-edit/{account_id}', [ManageMentorAccountController::class, 'edit'])->name('manage_mentor_accounts_edit')->middleware('auth');
 Route::POST('/manage-mentor-accounts-update', [ManageMentorAccountController::class, 'update'])->name('manage_mentor_accounts_update')->middleware('auth');
+Route::GET('/manage-student-list', [ManageMentorController::class, 'students'])->name('manage_student_list')->middleware('auth');
+
 
 /*
 -----------------------------------------------------------
@@ -177,3 +175,8 @@ Route::GET('/manage-monthly-statement-search', [ManageMonthlyStatementController
 Route::POST('/manage-monthly-statement-search-show', [ManageMonthlyStatementController::class, 'search_show'])->name('manage_statement_search_show')->middleware('auth');
 Route::POST('/manage-monthly-statement-payment-status-change', [ManageMonthlyStatementController::class, 'payment_status_change'])->name('manage_statement_payment_status_change')->middleware('auth');
 
+Route::POST('/manage-monthly-statement-date-search', [ManageMonthlyStatementController::class, 'date_range_search'])->name('manage_monthly_statement_date_search')->middleware('auth');
+
+
+// Send SMS
+Route::POST('/send_sms', [ManageApplicationController::class, 'send_sms'])->name('send-test-sms')->middleware('auth');

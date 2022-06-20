@@ -62,11 +62,7 @@
                                     placeholder="Enter amountin Tk." value="{{ $scholarship_data->amount }}">
                             </div>
 
-                            <div class="form-group">
-                                <label for="cost">Charge(Tk.)</label>
-                                <input type="number" class="form-control" id="approved_cost" name="approved_cost"
-                                    placeholder="Enter Cost Tk." value="{{ $scholarship_data->cost }}">
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label>From date<span class="text-danger">*</span></label>
@@ -123,12 +119,21 @@
                                         @forelse($mentors as $mentor)
                                             <option value="{{ $mentor->mentor_active_account->id ?? null }}">
                                                 {{ $mentor->user->name }}</option>
-                                        @empty
+                                                @empty
                                         @endforelse
+                                        <input type="hidden" id="mentor_id" name="mentor_id" value="{{ $mentor->id }}">
                                     </select>
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="form-group">
+                            <label for="cost">Charge(Tk.)</label>
+                            <input type="number" class="form-control" id="approved_cost" name="approved_cost"
+                                placeholder="Enter Charge Tk." value="{{ $scholarship_data->approved_cost }}">
+                        </div>
+
                         <!-- /.card-body -->
 
                         <div class="card-footer">

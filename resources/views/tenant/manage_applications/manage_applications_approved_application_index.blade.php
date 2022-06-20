@@ -20,11 +20,10 @@
         }
 
         .color {
-            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            background: linear-gradient(to right, #21ba2b, #1244b0);
             color: white;
             font-weight: bold;
         }
-
     </style>
 @endsection
 
@@ -44,7 +43,6 @@
 
 @section('content')
     <section class="content">
-
         <div class="container-fluid px-lg-4">
             <div class="row">
                 <div class="col-md-12 mt-lg-4 mt-4">
@@ -64,15 +62,17 @@
                     </div>
                 </div>
 
+
+
                 <!-- column -->
 
                 <div class="col-12">
                     <div class="card">
+
                         <!-- /.card-header -->
                         <div class="card-body">
 
                             <table id="example1" class="table table-bordered table-striped">
-                                
                                 <thead>
                                     <tr class="color">
                                         <th>SL#</th>
@@ -80,13 +80,14 @@
                                         <th>Student ID</th>
                                         <th>Phone</th>
                                         <th>Approved Amount</th>
-                                        <th>Approved Cost</th>
+                                        <th>Charge</th>
                                         <th>Total</th>
                                         <th>Payee</th>
                                         <th>Mentor/Student</th>
                                         <th class="text-center">View</th>
                                         <th class="text-center">Action</th>
-                                        <th class="text-center">SMS<span class="iconify-inline" data-icon="codicon:mail" style="color: rgb(255, 255, 255)" data-width="16"></span></th>
+                                        <th class="text-center">SMS<span class="iconify-inline" data-icon="codicon:mail"
+                                                style="color: rgb(255, 255, 255)" data-width="16"></span></th>
 
                                     </tr>
                                 </thead>
@@ -99,7 +100,8 @@
                                             <td>{{ $approved_application->student->phone }}</td>
                                             <td>{{ $approved_application->approved_amount }}</td>
                                             <td>{{ $approved_application->approved_cost }}</td>
-                                            <td>{{ $approved_application->approved_amount + $approved_application->approved_cost }}</td>
+                                            <td>{{ $approved_application->approved_amount + $approved_application->approved_cost }}
+                                            </td>
                                             <td>{{ $approved_application->account->account_title }}</td>
                                             @php
                                                 $payee = explode('\\', $approved_application->account->accountable_type);
@@ -125,67 +127,21 @@
                                                 <a type="button" class="btn-sm btn-danger" data-toggle="modal"
                                                     data-target="#delete_warning_modal"
                                                     data-scholarship_id_u="{{ $approved_application->scholarship_id }}"
-                                                    data-student_id_u="{{ $approved_application->student_id }}" data-approved_app_id_u="{{ $approved_application->id }}"><i
+                                                    data-student_id_u="{{ $approved_application->student_id }}"
+                                                    data-approved_app_id_u="{{ $approved_application->id }}"><i
                                                         class="fa fa-trash"></i> Delete</a>
                                             </td>
                                             <td>
 
+
                                                 {{-- <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
                                                     <span class="iconify-inline" data-icon="codicon:mail" style="color: blue" data-width="30"></span>
                                                   </button> --}}
-                                                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Send SMS <span class="iconify-inline" data-icon="codicon:mail" style="color: rgb(255, 255, 255)" data-width="16"></span></button>
-                                                
-                                                  <!-- Modal -->
-                                                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Send Message To <strong>{{ $approved_application->student->name }}</strong></h5>
-                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                          </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                          <form>
-                                                                <div class="form-group row">
-                                                                    <label for="inputPhone3" class="col-sm-2 col-form-label">To</label>
-                                                                    <div class="col-sm-10">
-                                                                      <input type="text" readonly class="form-control-plaintext" id="inputPhone3" value="{{ $approved_application->student->phone }}">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Message</label>
-                                                                    <div class="col-sm-10">
-                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Type</label>
-                                                                    <div class="col-sm-10">
-                                                                        <select>
-                                                                            <option selected>Choose...</option>
-                                                                            <option>Send Money</option>
-                                                                            <option>Document Issue</option>
-                                                                            <option>Add Account</option>
-                                                                          </select>
-                                                                    </div>
-                                                                </div>
-                                                          </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                            Discard
-                                                          </button>
-                                                          <button type="button" class="btn btn-success">
-                                                            Send Message
-                                                          </button>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
 
+                                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                                    data-target="#exampleModalCenter">Send SMS <span class="iconify-inline"
+                                                        data-icon="codicon:mail" style="color: rgb(255, 255, 255)"
+                                                        data-width="16"></span></button>
 
                                                 {{-- <button type="button" class="btn btn-success">Send SMS <span class="iconify-inline" data-icon="codicon:mail" style="color: rgb(255, 255, 255)" data-width="16"></span></button> --}}
                                             </td>
@@ -194,6 +150,8 @@
                                     @endforelse
                                 </tbody>
                             </table>
+
+
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -202,6 +160,56 @@
             </div>
         </div>
     </section>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form method="post" action="{{ route('send-test-sms') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Send
+                            Message To
+                            <strong>{{ $approved_application->student->name }}</strong>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{-- <form> --}}
+                        <div class="form-group row">
+                            <label for="inputPhone3" class="col-sm-1 col-form-label">To</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="inputPhone3"
+                                    name="phone" value="{{ $approved_application->student->phone }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleFormControlTextarea1" class="col-sm-3 col-form-label">Message
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3"></textarea>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Discard
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            Send Message
+                        </button>
+                    </div>
+            </form>
+        </div>
+    </div>
 
 
     {{-- ------------------------Delete User Modal---------------------------- --}}
@@ -235,7 +243,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('extra_js')

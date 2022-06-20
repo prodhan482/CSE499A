@@ -62,8 +62,8 @@
 
                             <div class="form-group">
                                 <label for="cost">Charge(Tk.)</label><span class="text-danger">*</span>
-                                <input type="number" class="form-control" id="cost" name="cost"
-                                    placeholder="Enter cost Tk." value="{{ $statement->approved_cost }}">
+                                <input type="number" class="form-control" id="approved_cost" name="approved_cost"
+                                    placeholder="Enter Charge Tk." value="{{ $statement->approved_cost }}">
                             </div>
 
                             <div class="form-group">

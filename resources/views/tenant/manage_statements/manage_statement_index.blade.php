@@ -17,7 +17,7 @@
         }
 
         .color {
-            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            background: linear-gradient(to right, #21ba2b, #1244b0);
             color: white;
             font-weight: bold;
         }
@@ -73,7 +73,6 @@
                                         <th>SL#</th>
                                         <th>Scholarship Title</th>
                                         <th>Amount</th>
-                                        <th>Total</th>
                                         <th>Deadline</th>
                                         {{-- <th>Total Applicant</th> --}}
                                         <th>View statement</th>
@@ -86,7 +85,6 @@
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $scholarship->scholarship_title }}</td>
                                             <td>{{ $scholarship->amount }}</td>
-                                            <td>{{ $scholarship->amount + $scholarship->cost }}</td>
                                             <td>{{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}</td>
                                             
                                             {{-- <td>{{$scholarship->students->count()}}</td> --}}

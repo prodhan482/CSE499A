@@ -210,4 +210,20 @@ class ManageMonthlyStatementController extends Controller
             'month_year' => $request->month_year,
         ])->with('success', 'Payment Status updated successfully');
     }
+
+
+    public function date_range_search(Request $request){
+
+        $scholarship_id = $request->input('scholarship_id');
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+       
+        $query = DB::table('monthly_statements')->select()
+            ->where('month_year', '>=', $fromDate)
+            ->where('month_year', '<=', $toDate)
+            ->get();
+        $statements = MonthlyStatement::where('month_year', '>=',  $fromDate)->where('month_year','<=',  $toDate)->get();
+        return view('tenant.manage_statements.manage_statement_show', compact('statements',  'query'));
+    
+    }
 }

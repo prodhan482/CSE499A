@@ -15,11 +15,10 @@
         }
 
         .color {
-            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            background: linear-gradient(to right, #21ba2b, #1244b0);
             color: white;
             font-weight: bold;
         }
-
     </style>
 @endsection
 
@@ -74,8 +73,11 @@
                                         <th>Phone</th>
                                         <th>Email</th>
                                         <th>Approval</th>
-                                        <th class="text-center">View/Action</th>
+
+                                        <th class="text-center">View/Action </th>
                                         {{-- <th>Action</th> --}}
+                                        <th>SMS<span class="iconify-inline" data-icon="codicon:mail"
+                                                style="color: rgb(255, 255, 255)" data-width="16"></span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,9 +92,7 @@
                                             <td class="text-center">
                                                 @if ($applied_student->pivot->is_approve == 1)
                                                     <h5><span class="badge badge-success">Approved</span></h5>
-
                                                 @else
-
                                                     <a class="btn btn-info btn-sm"
                                                         href="{{ route('manage_applications', [$scholarship_id, $applied_student->id]) }}"
                                                         role="button">Approve</a>
@@ -102,14 +102,14 @@
 
                                             <td class="text-center">
                                                 <a class="btn btn-primary btn-sm"
-                                                    href="{{ route('manage_applications_profile', [$applied_student->id]) }}" target="_blank"
-                                                    role="button"><i class='far fa-user'></i> Student Profile</a>
+                                                    href="{{ route('manage_applications_profile', [$applied_student->id]) }}"
+                                                    target="_blank" role="button"><i class='far fa-user'></i> Student
+                                                    Profile</a>
                                                 {{-- <a class="btn btn-primary btn-sm"
                                                     href="{{ route('manage_applications_profile', [$applied_student->id]) }}" target="_blank"
                                                     role="button"><i class='far fa-user'></i> Profile</a> --}}
 
                                                 @if ($applied_student->pivot->is_approve == 1)
-
                                                     <a class="btn btn-success btn-sm"
                                                         href="{{ route('manage_applications_scholarship_details', [$applied_student->pivot->scholarship_id, $applied_student->id]) }}"
                                                         role="button"><i class="fas fa-info"></i> Details</a>
@@ -118,7 +118,89 @@
 
 
                                             </td>
-                                            </td>
+                                                <td>
+                                                    {{-- <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                                    <span class="iconify-inline" data-icon="codicon:mail" style="color: blue" data-width="30"></span>
+                                                  </button> --}}
+                                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                                        data-target="#exampleModalCenter">Send SMS <span
+                                                            class="iconify-inline" data-icon="codicon:mail"
+                                                            style="color: rgb(255, 255, 255)"
+                                                            data-width="16"></span></button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            {{-- <form method="post"
+                                                            action="#"> --}}
+
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Send
+                                                                        Message To
+                                                                        <strong>{{ $applied_student->name }}</strong>
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="POST"
+                                                                        action="{{ route('send-test-sms') }}">
+                                                                        @csrf
+                                                                        <div class="form-group row">
+                                                                            <label for="inputPhone3"
+                                                                                class="col-sm-1 col-form-label">To</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" readonly
+                                                                                    class="form-control-plaintext"
+                                                                                    id="inputPhone3" name="phone"
+                                                                                    value="{{ $applied_student->phone }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="exampleFormControlTextarea1"
+                                                                                class="col-sm-3 col-form-label">Message
+                                                                            </label>
+                                                                            <div class="col-sm-10">
+                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3"></textarea>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="exampleFormControlTextarea1"
+                                                                                class="col-sm-3 col-form-label">Type</label>
+                                                                            <div class="col-sm-10">
+                                                                                <select>
+                                                                                    <option selected disabled>SMS Type
+                                                                                    </option>
+                                                                                    <option>Send Money</option>
+                                                                                    <option>Document Issue</option>
+                                                                                    <option>Add Account</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">
+                                                                        Discard
+                                                                    </button>
+                                                                    <button type="submit" class="btn btn-success">
+                                                                        Send Message
+                                                                    </button>
+                                                                </div>
+                                                                {{-- </form> --}}
+                                                            </div>
+                                                        </div>
+
+
+                                                        {{-- <button type="button" class="btn btn-success">Send SMS <span class="iconify-inline" data-icon="codicon:mail" style="color: rgb(255, 255, 255)" data-width="16"></span></button> --}}
+                                                </td>
                                         </tr>
                                     @empty
                                     @endforelse
@@ -194,7 +276,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('extra_js')

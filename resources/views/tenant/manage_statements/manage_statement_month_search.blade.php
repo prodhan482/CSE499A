@@ -1,7 +1,6 @@
 @extends('layouts.dashboard_layout')
 @section('custom_style')
     <link href="{{ asset('assets/css/bs-datepicker.min.css') }}" rel="stylesheet">
-
 @endsection
 
 @section('page_errors')
@@ -66,7 +65,6 @@
                                 <input type="text" name="month_year" id="for_month" class="form-control"
                                     placeholder="yyyy-mm-dd" required>
                             </div>
-                       
                         </div>
 
                         <div class="card-footer">
@@ -78,15 +76,61 @@
             </div>
         </div>
     </div>
-@endsection
 
-@section('extra_js')
-    <script src="{{ asset('assets/js/bs-datepicker.min.js') }}"></script>
-    <script>
-        $("#for_month").datepicker({
-            format: "yyyy-mm-dd",
-            startView: "months",
-            minViewMode: "months"
-        });
-    </script>
-@endsection
+    {{-- <div class="col-12">
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form class="offset-1" action="" method="POST">
+                    <div class="form-group">
+                        <label for="scholarship">Select Scholarship<span class="text-danger">*</span></label>
+                        <select class="form-control" name="scholarship_id" id="scholarship" required>
+                            <option value="">SELECT</option>
+                            @forelse ($scholarships as $scholarship)
+                                <option value="{{ $scholarship->id }}">{{ $scholarship->scholarship_title }}
+                                </option>
+                            @empty
+                            @endforelse
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputCity">Start Date</label>
+                            <input type="month" class="form-control" name="from" id="from">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputZip">End Date</label>
+                            <input type="month" class="form-control" name="to" id="to">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputZip">Name</label>
+                            <select class="form-control" id="name">
+                                <option selected disabled>Choose</option>
+                                <option value="All">All</option>
+                                <option value="Student">Student</option>
+                                <option value="Mentor">Mentor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="offset-3">
+                        <button type="submit" class="btn btn-primary" id="generate">Search</button>
+                        <button type="reset" class="btn btn-danger" id="reset">Reset</button>
+                    </div>
+                </form>
+            </div> --}}
+        @endsection
+
+
+        @section('extra_js')
+            <script src="{{ asset('assets/js/bs-datepicker.min.js') }}"></script>
+            <script>
+                $("#for_month").datepicker({
+                    format: "yyyy-mm-dd",
+                    startView: "months",
+                    minViewMode: "months"
+                });
+            </script>
+
+
+            <script src="{{ asset('assets/js/statement_search.js') }}"></script>
+        @endsection

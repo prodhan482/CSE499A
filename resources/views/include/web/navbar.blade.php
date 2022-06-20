@@ -35,7 +35,8 @@
                         </li> --}}
 
                         <li class="nav-item">
-                            <a href="{{ route('contact_us') }}" class="nav-link">Contact Us</a>
+                            <a href="{{ route('contact_us') }}"
+                            class="{{ \Request::route()->getName() == 'contact_us' ? 'nav-link active' : 'nav-link' }}">Contact Us</a>
                         </li>
 
                         @guest

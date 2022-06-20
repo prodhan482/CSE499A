@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <section class="page-title title-bg13">
+    {{-- <section class="page-title title-bg13">
         <div class="d-table">
             <div class="d-table-cell">
                 <h2>Sign Up</h2>
@@ -23,7 +23,7 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
-    </section>
+    </section> --}}
 
     <div class="signup-section ptb-100">
         <div class="container">
@@ -126,6 +126,31 @@
             </div>
         </div>
     </div>
+
+
+    {{-- <section class="subscribe-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="section-title">
+                        <h2>Get New Scholarship Notifications</h2>
+                        <p>Subscribe & get all related scholarships notification</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form class="newsletter-form" data-toggle="validator">
+                        <input type="email" class="form-control" placeholder="Enter your email" name="EMAIL" required
+                            autocomplete="off">
+                        <button class="default-btn sub-btn" type="submit">
+                            Subscribe
+                        </button>
+                        <div id="validator-newsletter" class="form-result"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section> --}}
+
 @endsection
 
 @section('custom_js')

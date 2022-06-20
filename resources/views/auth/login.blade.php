@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <section class="page-title title-bg12">
+    {{-- <section class="page-title title-bg12">
         <div class="d-table">
             <div class="d-table-cell">
                 <h2>Sign In</h2>
@@ -23,7 +23,7 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
-    </section>
+    </section> --}}
 
     <div class="signin-section ptb-100">
         <div class="container">
@@ -64,9 +64,11 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <div class="create-btn text-center">
+
+                            <div class="create-btn">
                                 <a href="{{route('password.request')}}" class="float-right">
                                     Forgot Password?
+                                    <i class='bx bx-chevrons-right bx-fade-right'></i>
                                 </a>
                             </div>
                         </div>

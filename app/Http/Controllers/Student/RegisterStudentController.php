@@ -207,7 +207,7 @@ class RegisterStudentController extends Controller
         $user->assignRole($role);
 
 
-        return redirect()->route('student_profile', Auth::user()->id)->with('success', 'Congratulations! Profile created succesfully.');
+        return redirect()->route('available_scholarships', Auth::user()->id)->with('success', 'Congratulations! Profile created succesfully.');
     }
 
     /**

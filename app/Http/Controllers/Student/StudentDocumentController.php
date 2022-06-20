@@ -77,7 +77,9 @@ class StudentDocumentController extends Controller
         $document->document_url = $document_url;
         $student->documents()->save($document);
 
-        return redirect()->back()->with('success', 'Document uploaded succesfully');
+        // return redirect()->back()->with('success', 'Document uploaded succesfully');
+        return redirect()->route('available_scholarships', Auth::user()->id)->with('success', 'Document uploaded succesfully. Now you can apply');
+
     }
 
     /**

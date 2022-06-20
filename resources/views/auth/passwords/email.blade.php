@@ -35,6 +35,9 @@
                             <div class="alert alert-ssuccess">
                                 {{ session('status') }}
                             </div>
+                            {{-- <div>
+                                Go to check inbox <a href="mailto:">you@somedomain.com</a><br>
+                            </div> --}}
                         @endif
                         <div class="form-group">
                             <label for="email">E-Mail Address</label>

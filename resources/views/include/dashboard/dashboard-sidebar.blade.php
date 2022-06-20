@@ -52,6 +52,16 @@
                         </a>
                     </li>
                 @endcan
+                
+                <li class="nav-item">
+                    <a href="{{ route('manage_students.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-check"></i>
+                        <p>
+                            Student List
+                        </p>
+                    </a>
+                </li>
+
                 @can('superadmin-can')
                     <li class="nav-item">
                         <a href="{{ route('manage_tenants.index') }}" class="nav-link">
@@ -62,6 +72,7 @@
                         </a>
                     </li>
                 @endcan
+
                 @can('role-list')
                     <li class="nav-item">
                         <a href="{{ route('manage_roles.index') }}" class="nav-link">

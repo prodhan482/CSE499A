@@ -49,6 +49,8 @@ class LoginController extends Controller
             $this->redirectTo = '/student/student-dashboard';
         return $this->redirectTo;
 
+
+
         // return $next($request);
     }
     public function __construct()

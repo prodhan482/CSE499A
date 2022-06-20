@@ -57,7 +57,7 @@ class ScholarshipApplicationController extends Controller
         elseif (Document::where('documentable_id', $student->id)->exists()) {
             $student->scholarships()->attach($request->scholarship_id);
 
-            return redirect()->route('student_applications_index')->with('success', 'Scholarship Application submitted successfully. We will contact you soon.');
+            return redirect()->route('student_account')->with('success', 'Scholarship Application submitted successfully. We will contact you soon.Please add a valid account if you did not add.');
         }
         else {
             return redirect()->route('student_document')->with('warning', 'Please upload your necessary documents.');

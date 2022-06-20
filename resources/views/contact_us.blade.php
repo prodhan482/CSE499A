@@ -237,7 +237,7 @@
 
 
 <body>
-    <section class="page-title title-bg13">
+    {{-- <section class="page-title title-bg13">
                 <h2>Contact Us</h2>
                 <ul>
                     <li>
@@ -250,49 +250,59 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
-    </section>
+    </section> --}}
     <div class="signup-section ptb-100">
         <div class="container">
             <div class="contactUs">
                 <div class="box">
                     <div class="contact form">
-                        <h3>Send a Message</h3>
-                        <form action="" method="POST">
+                        <h3>Contact Us</h3>
+                        <form class="basic-info needs-validation" action="{{ route('contact_us') }}" method="POST">
+                            
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="formBox">
                                 <div class="row50">
                                     <div class="inputBox">
                                         <span>First Name</span>
-                                        <input type="text" placeholder="First Name." required/>
+                                        <input type="text" placeholder="First Name" name="fname" required/>
                                     </div>
                                     <div class="inputBox">
                                         <span>Last Name</span>
-                                        <input type="text" placeholder="Last Name." required/>
+                                        <input type="text" placeholder="Last Name" name="lname" required/>
                                     </div>
                                 </div>
                                 <div class="row50">
                                     <div class="inputBox">
                                         <span>Email</span>
-                                        <input type="email" placeholder="example@mail.com" required/>
+                                        <input type="email" placeholder="example@mail.com" name="email" required/>
                                     </div>
                                     <div class="inputBox">
                                         <span>Mobile</span>
-                                        <input type="text" placeholder="+880 1X1235678" required/>
+                                        <input type="text" placeholder="+880 1X1235678" name="phone" required/>
                                     </div>
                                 </div>
                                 <div class="row100">
                                     <div class="inputBox">
                                         <span>Message</span>
-                                        <textarea placeholder="Write Your Message....." required></textarea>
+                                        <textarea placeholder="Write Your Message....." name="message" required></textarea>
                                     </div>
                                 </div>
 
                                 <div class="row100">
-                                    <div class="inputBox">
-                                        <input type="submit" value="Send" />
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Send</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+
+                    <div class="contact map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111239.729762746!2d90.42243546382743!3d23.82359779597969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fce7d991f%3A0xacfaf1ac8e944c05!2sBasundhara%20Residential%20Area%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1649259192946!5m2!1sen!2sbd"
+                            style="border: 0" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                     <div class="contact info">
@@ -330,13 +340,6 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-
-                    <div class="contact map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111239.729762746!2d90.42243546382743!3d23.82359779597969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fce7d991f%3A0xacfaf1ac8e944c05!2sBasundhara%20Residential%20Area%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1649259192946!5m2!1sen!2sbd"
-                            style="border: 0" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

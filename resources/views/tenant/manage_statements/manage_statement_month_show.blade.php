@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_layout')
+@extends('layouts.tenant_dashboard_layout')
 @section('custom_style')
     {{-- <link href="{{ asset('/plugins/tables/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"> --}}
     <!-- DataTables -->
@@ -15,9 +15,17 @@
         }
 
         .color {
-            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            background: linear-gradient(to right, #21ba2b, #1244b0);
             color: white;
             font-weight: bold;
+        }
+
+        .striped-border {
+            border: 1px dashed #000;
+            width: 50%;
+            margin: auto;
+            margin-top: 5%;
+            margin-bottom: 5%;
         }
 
     </style>
@@ -96,6 +104,23 @@
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr style="color: blueviolet" id="total">
+                                        <td colspan="3"></td>
+
+                                        <td >Total Amount (Monthly):</td>
+                                        <td>
+                                            {{ $totalAmount = DB::table('monthly_statements')->where('month_year', $month_year)->get()->sum('approved_amount') }}
+                                        </td>
+                                        <td>
+                                            {{ $totalAmount = DB::table('monthly_statements')->where('month_year', $month_year)->get()->sum('approved_cost') }}
+                                        </td>
+                                        <td>
+                                            {{ $totalAmount =DB::table('monthly_statements')->where('month_year', $month_year)->get()->sum('approved_amount') +DB::table('monthly_statements')->where('month_year', $month_year)->get()->sum('approved_cost') }}
+                                        </td>
+                                        <td colspan="5"></td>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
                                     @forelse($statements as $statement)
                                         <tr>
@@ -105,7 +130,9 @@
                                             <td>{{ $statement->student->phone }}</td>
                                             <td>{{ $statement->approved_amount }}</td>
                                             <td>{{ $statement->approved_cost }}</td>
-                                            <td>{{ $statement->approved_amount + $statement->approved_cost }}</td>
+                                            <td>{{ $statement->total = $statement->approved_cost + $statement->approved_amount }}
+                                            </td>
+
                                             @php
                                                 $payee = explode('\\', $statement->account->accountable_type);
                                             @endphp
@@ -128,10 +155,11 @@
                                                     data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                         class="fa fa-edit"></i></a>
                                             </td>
-
                                         </tr>
+
                                     @empty
                                     @endforelse
+
                                 </tbody>
                             </table>
                         </div>
@@ -207,7 +235,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('extra_js')
@@ -256,6 +283,8 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
+
+
     <!-- Page specific script -->
     <script>
         $(function() {
@@ -264,8 +293,28 @@
                 "responsive": false,
                 "scrollX": true,
                 "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "excel", "pdf", "print"]
+                "autoWidth": true,
+                "buttons": [{
+                        extend: 'copy',
+                        footer: true
+                    },
+                    {
+                        extend: 'excel',
+                        footer: true
+                    },
+                    {
+                        extend: 'csv',
+                        footer: true
+                    },
+                    {
+                        extend: 'print',
+                        footer: true,
+                    },
+                    {
+                        extend: 'pdf',
+                        footer: true
+                    }
+                ]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
         });

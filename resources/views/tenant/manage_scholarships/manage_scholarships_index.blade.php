@@ -18,7 +18,7 @@
         }
 
         .color {
-            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            background: linear-gradient(to right, #21ba2b, #1244b0);
             color: white;
             font-weight: bold;
         }
@@ -80,8 +80,6 @@
                                         <th>Scholarship Title</th>
                                         {{-- <th>Eligibility</th> --}}
                                         <th>Amount</th>
-                                        {{-- <th>Cost</th> --}}
-                                        <th>Total</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
                                         <th>Total Applicant</th>
@@ -97,8 +95,6 @@
                                             <td>{{ $scholarship->scholarship_title }}</td>
                                             {{-- <td>{{ $scholarship->eligibility }}</td> --}}
                                             <td>{{ $scholarship->amount }}</td>
-                                            {{-- <td>{{ $scholarship->cost }}</td> --}}
-                                           <td> {{ $totalAmount = $scholarship->amount + $scholarship->cost}}</td>
                                             <td>{{ (new DateTime($scholarship->deadline))->format('d-M-Y') }}</td>
                                             @if ($scholarship->status == 'ACTIVE')
                                                 <td><button type="button" class="btn btn-success btn-sm align-top"

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class Helper
 {
 
+
+   
+
     // if true then the button will be visible
     public static function is_applied_for_scholarship(int $scholarship_id)
     {
@@ -60,4 +63,5 @@ class Helper
         curl_close($ch);
         return $response;
     }
+    
 }

@@ -100,7 +100,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td><span>Organization:  </span></td>
-                                                    <td> Hridoya Bangladesh</td>
+                                                    <td> {{$scholarship->scholarship_title}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Scholarship Type: </span></td>
@@ -164,7 +164,7 @@
                     <div class="posted-by">
                         <img src="{{asset('assets/img/client-1.png')}}" alt="client image">
                         <h4>Manager</h4>
-                        <span>Hridoye Bangladesh</span>
+                        <span>{{$scholarship->scholarship_title}}</span>
                     </div>
                 </div>
                 <div class="job-sidebar">

@@ -81,7 +81,7 @@ class StudentAccountController extends Controller
 
         $student->student_accounts()->save($account);
 
-        return redirect()->route('student_account')->with('success', 'Account created successfully');
+        return redirect()->route('student_applications_index')->with('success', 'Account created successfully and all the process completed. We will contact with you soon.');
     }
 
     /**

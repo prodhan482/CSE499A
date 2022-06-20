@@ -101,7 +101,7 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="#">
+                            <a href="{{ route('contact_us') }}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Contact
                             </a>

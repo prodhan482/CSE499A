@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\CommonControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\MonthlyStatement;
 use App\Models\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
@@ -38,17 +37,6 @@ class EditProfileController extends Controller
         User::find(auth()->user()->id)->update(['password'=> $request->new_password]);
 
         return back()->with('success', 'Password Updated Successfully');
-    }
-
-
-    public function show2($scholarship_id)
-    {
-        $statements = MonthlyStatement::where('scholarship_id', $scholarship_id)->orderBy('month_year', 'desc')->get();
-
-       //dd($statements);
-        return view('web.student.student-statement-view', [
-            'statements' => $statements,
-        ]);
     }
 
 

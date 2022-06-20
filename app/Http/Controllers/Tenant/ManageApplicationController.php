@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Models\ApprovedApplication;
@@ -73,6 +74,7 @@ class ManageApplicationController extends Controller
             'approved_applications' => $approved_applications,
         ]);
     }
+
 
     /**
      * Display the specified resource.
@@ -172,6 +174,7 @@ class ManageApplicationController extends Controller
             'from_date' => 'required',
             'to_date' => 'required',
             'pay_to' => 'required',
+            // 'account_id_mentor' => 'required',
         ]);
 
 
@@ -195,6 +198,7 @@ class ManageApplicationController extends Controller
         $approve = new ApprovedApplication();
         $approve->student_id = $request->student_id;
         $approve->scholarship_id = $request->scholarship_id;
+        $approve->mentor_id = $request->mentor_id;
         $approve->approved_amount = $request->approved_amount;
         $approve->approved_cost = $request->approved_cost;
         $approve->from_date = $request->from_date;
@@ -322,5 +326,16 @@ class ManageApplicationController extends Controller
 
         return redirect()->back()->with('success', 'Deleted successfully');
 
+    }
+
+
+    public function send_sms(Request $request){
+        // dd($request->all());
+        $phone = $request->phone;
+        $message = $request->message;
+
+        $smsResponse = Helper::sendSMS($phone,$message);
+        return('SMS send Successfully');
+        
     }
 }

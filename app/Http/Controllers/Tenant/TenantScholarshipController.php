@@ -7,9 +7,6 @@ use App\Models\Scholarship;
 use Illuminate\Http\Request;
 use PDF;
 
-use Illuminate\Support\Facades\DB;
-
-
 class TenantScholarshipController extends Controller
 {
     /**
@@ -90,13 +87,18 @@ class TenantScholarshipController extends Controller
             'scholarship_data' => Scholarship::findOrFail($scholarship_id),
         ];
 
+        // $path = base_path('logo.png');
+        // $type = pathinfo($path,PATHINFO_EXTENSION);
+        // $d = file_get_contents($path);
+        // $pic = 'd:image/' . $type . ';base64' . base64_encode($d);
+
         // $scholarship_data = Scholarship::findOrFail($scholarship_id);
 
         // dd( $scholarship_data);
 
 
-        $pdf = PDF::loadView('tenant.manage_scholarships.manage_scholarships_details', $data)->setOptions(['defaultFont' => 'sans-serif']);
-
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('tenant.manage_scholarships.manage_scholarships_details', $data);
+        // $pdf = PDF::setOptions(['isHtml5parserEnabled' => true, 'isRemoteEnabled' => true])->loadview('tenant.manage_scholarships.manage_scholarships_details', compact('pic'));
         return $pdf->stream('test.pdf');
     }
 
@@ -192,10 +194,4 @@ class TenantScholarshipController extends Controller
 
         return back()->with('success', 'Status Changed Successfully');
     }
-
-    // public function operations()
-    // {
-    //     $totalAmount = DB::table('amount','cost')->sum('amount','cost');
-    //     print_r($totalAmount);
-    // }
 }

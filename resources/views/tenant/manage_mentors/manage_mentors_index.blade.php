@@ -15,7 +15,7 @@
         }
 
         .color {
-            background: linear-gradient(to right, #ec2F4B, #009FFF);
+            background: linear-gradient(to right,#21ba2b, #1244b0);
             color: white;
             font-weight: bold;
         }
@@ -75,6 +75,7 @@
                                         <th>Address</th>
                                         <th>Account Info</th>
                                         <th>Action</th>
+                                        <th>View Student</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,6 +103,11 @@
                                                     @else 
                                                     <a class="btn btn-sm btn-warning" href="{{ route('manage_mentor_accounts_create',$mentor->id) }}" data-toggle="tooltip" data-placement="top" title="Account"><i class="fas fa-university"></i> Create Account</a>
                                                     @endif
+                                            </td>
+                                            
+                                            <td><a class="btn btn-primary btn-sm"
+                                                href="{{ route('manage_student_list') }}"
+                                                role="button">View All</a>
                                             </td>
                                         </tr>
                                     @empty
@@ -234,7 +240,26 @@
                 "scrollX": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "excel", "pdf", "print"]
+                "buttons": [{
+                        extend: 'copy',
+                        footer: true
+                    },
+                    {
+                        extend: 'excel',
+                        footer: true
+                    },
+                    {
+                        extend: 'csv',
+                        footer: true
+                    },
+                    {
+                    extend: 'print',
+                    footer: true,
+                },
+                    {
+                        extend: 'pdf',
+                        footer: true
+                    }]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
         });

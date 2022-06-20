@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMonthlyStatementsTable extends Migration
+class CreateApprovedApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class CreateMonthlyStatementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('monthly_statements', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+        Schema::create('approved_applications', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('tenant_id')->nullable()->constrained();
             $table->foreignId('student_id')->references('id')->on('students');
             $table->foreignId('scholarship_id')->references('id')->on('scholarships');
+            $table->foreignId('mentor_id')->references('id')->on('mentors');
             $table->double('approved_amount')->nullable();
             $table->double('approved_cost')->nullable();
-            $table->date('month_year')->nullable();
-            $table->text('note')->nullable();
-            $table->integer('account_id')->nullable();
-            $table->string('status')->default("PENDING");
+            $table->date('from_date')->nullable();
+            $table->date('to_date')->nullable();
+            $table->date('approval_date')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->foreignId('account_id')->references('id')->on('accounts');
             $table->timestamps();
-
-            $table->index(['student_id', 'scholarship_id', 'month_year']);
-            $table->primary(['student_id', 'scholarship_id', 'month_year']);
-
         });
     }
 
@@ -38,6 +37,6 @@ class CreateMonthlyStatementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('monthly_statements');
+        Schema::dropIfExists('approved_applications');
     }
 }

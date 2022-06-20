@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Scholarship;
-use App\Models\contactus;
-
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,31 +33,21 @@ class HomeController extends Controller
 
     public function contact_us()
     {
-        return view('contact_us');
+        return view("contact_us");
+    
     }
 
-    
+    public function store(Request $request){
 
-    public function sendMessage(Request $request)
-    {
-            
-
-        $contactus = new contactus();
-            $contactus->name = $request->name;
-            $contactus->email = $request->email;
-            $contactus->phone = $request->phone;
-            $contactus->message = $request->message;
-            $contactus->save();
-            
-            // print_r($request->all());
-        
-     
-            // if($sendMessage){
-            //     return back()->with('success','Message successfuly added to database');
-            //  }else{
-            //      return back()->with('fail','Something went wrong, try again later');
-            //  }
-        
+        $contact = new Contact;
+        $contact->fname=$request->fname;
+        $contact->lname=$request->lname;
+        $contact->email=$request->email;
+        $contact->phone=$request->phone;
+        $contact->message=$request->message;
+        $contact->save();
+        return redirect()->route('contact_us')
+            ->with('success', 'Send successfully');
 
     }
 }

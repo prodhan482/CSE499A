@@ -20,6 +20,11 @@ class ApprovedApplication extends Model
         return $this->belongsTo(Account::class);
     }
 
+    public function mentor()
+    {
+        return $this->belongsTo(Mentor::class);
+    }
+
     protected static function booted()
     {
         static::addGlobalScope(new TenantScope);

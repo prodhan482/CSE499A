@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApprovedApplication;
+use App\Models\Degree;
 use App\Models\Mentor;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class ManageMentorController extends Controller
 {
@@ -28,6 +31,7 @@ class ManageMentorController extends Controller
             'mentors' => $mentors,
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -82,6 +86,23 @@ class ManageMentorController extends Controller
         return view('tenant.manage_mentors.manage_mentors_show',[
             'mentor' => Mentor::find($id),
         ]);
+    }
+
+
+    public function students(Request $request)
+    {
+
+        $mentor_id = $request->mentor_id
+;
+        $query = DB::table('approved_applications')->select()
+            ->where('mentor_id', '=', $mentor_id)
+            ->get();
+
+        $students = ApprovedApplication::where('mentor_id', '>=',  $mentor_id)->get();
+
+        
+        dd($query);
+        return view('tenant.manage_mentors.manage_student_list', compact('students','query'));
     }
 
     /**

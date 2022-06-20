@@ -72,6 +72,11 @@ class Student extends Model
         return $this->hasMany(MonthlyStatement::class);
     }
 
+    public function mentor()
+    {
+        return $this->hasOne(Mentor::class);
+    }
+
 
     //    protected static function booted()
     //    {
